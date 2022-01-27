@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Customer Details</h1>
+
+<div mat-dialog-content>
+  <form [formGroup]="detailsForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput name="name" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput [matDatepicker]="picker" name="date" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Product Category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="Laptop">Laptop</mat-option>
+        <mat-option value="Desktop">Desktop</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-field">
+      <mat-label>Warranty Status</mat-label>
+      <mat-radio-group class="radio-group" aria-label="Select an option" formControlName="warranty">
+        <mat-radio-button class="radio-button" value="Available">Available</mat-radio-button>
+        <mat-radio-button class="radio-button" value="Expired">Expired</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Phone Number</mat-label>
+      <input type="text" matInput name="phone" formControlName="phone">
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="product detail in short" name="description" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <div mat-dialog-actions [align]="'end'">
+      <button mat-raised-button color="warn" (click)="onClose()">Close</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="detailsForm.invalid">Save</button>
+    </div>
+  </form>
+</div>
